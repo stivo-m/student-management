@@ -4,7 +4,7 @@ import { PhoneNumber } from "../objects/phone_number";
 export interface UserBioInformation {
 	firstName: string;
 	lastName: string;
-	passportPhotoUrl: string;
+	file: any;
 }
 
 export interface StudentInfo {
@@ -22,6 +22,7 @@ export interface StudentInput {
 	lastName: string;
 	dob: Date;
 	admissionNumber: number;
+	file: any;
 }
 
 export interface ParentInput {

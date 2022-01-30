@@ -1,15 +1,24 @@
 import { Upload } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { useState } from "react";
 
 const UploadComponent = () => {
+	const [file, setFile] = useState([]);
+	const onChangeHandler = (res: any) => {
+		setFile(res.fileList);
+
+		console.log(file);
+	};
 	return (
 		<Upload
 			name='avatar'
 			listType='picture-card'
 			className='avatar-uploader'
 			style={{ width: "100%" }}
-			showUploadList={false}
-			action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+			showUploadList={true}
+			accept='.jpg,.jpeg,.png'
+			onChange={onChangeHandler}
+			fileList={file}
 		>
 			<div>
 				<PlusOutlined />

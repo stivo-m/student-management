@@ -5,7 +5,7 @@ import { ParentInfo, UserBioInformation } from "../interfaces/interfaces";
 class ParentProfile implements UserBioInformation, ParentInfo {
 	firstName: string;
 	lastName: string;
-	passportPhotoUrl: string;
+	file: string;
 	phoneNumber: PhoneNumber;
 	emailAddress: EmailAddress;
 	address: string;
@@ -20,7 +20,7 @@ class ParentProfile implements UserBioInformation, ParentInfo {
 	) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.passportPhotoUrl = passportPhotoUrl;
+		this.file = passportPhotoUrl;
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
 		this.address = address;

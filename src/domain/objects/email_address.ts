@@ -8,8 +8,8 @@ class EmailAddress {
 	}
 
 	public static create(email: string): EmailAddress {
-		if (email == undefined || email === "" || !emailValidator(email)) {
-			throw "Invalid email address";
+		if (email === undefined || email === "" || !emailValidator(email)) {
+			throw Error("Invalid email address");
 		} else {
 			return new EmailAddress(email);
 		}

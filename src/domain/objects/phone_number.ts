@@ -7,8 +7,8 @@ class PhoneNumber {
 	}
 
 	public static create(num: string): PhoneNumber {
-		if (num == undefined || num === "" || !phoneNumberValidator(num)) {
-			throw "Invalid phone number format";
+		if (num === undefined || num === "" || !phoneNumberValidator(num)) {
+			throw Error("Invalid phone number format");
 		} else {
 			return new PhoneNumber(num);
 		}

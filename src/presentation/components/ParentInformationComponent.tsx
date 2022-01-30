@@ -1,4 +1,4 @@
-import { Form, Input, Button, DatePicker, Row, Col } from "antd";
+import { Form, Input, Button, Row, Col } from "antd";
 import useStore from "../../application/state/store";
 import { Store } from "../../domain/interfaces/types";
 import UploadComponent from "./UploadComponent";
@@ -32,6 +32,7 @@ const ParentInformationComponent = () => {
 			props.address,
 		);
 
+		// ensure the values for email and phone number are valid and not undefined
 		if (
 			parentDetails !== undefined &&
 			parentDetails.emailAddress.value !== undefined &&
@@ -48,85 +49,136 @@ const ParentInformationComponent = () => {
 				name='student-details-form'
 				form={form}
 				layout='vertical'
-				style={{ width: "100%" }}
+				style={{ width: "100%", marginTop: "50px" }}
 				onFinish={handleSubmit}
 				initialValues={{
 					firstName: oldParentProfile?.firstName,
 					lastName: oldParentProfile?.lastName,
 					email: oldParentProfile?.emailAddress.value,
 					phoneNumber: oldParentProfile?.phoneNumber.value,
+					address: oldParentProfile?.address,
 				}}
 			>
-				<UploadComponent />
+				<Row gutter={16}>
+					<Col span={24}>
+						<UploadComponent />
+					</Col>
+					<Col xs={24} md={12} lg={12}>
+						<Form.Item
+							label='First Name'
+							name='firstName'
+							required
+							rules={[
+								{
+									required: true,
+									message: "Please enter your parent's first name",
+								},
+							]}
+							style={{ width: "100%", marginTop: "10px" }}
+						>
+							<Input placeholder='e.g John' />
+						</Form.Item>
+					</Col>
 
-				<Form.Item
-					label='First Name'
-					name='firstName'
-					required
-					rules={[{ required: true, message: "Please enter your first name" }]}
-					style={{ width: "100%", marginTop: "10px" }}
-				>
-					<Input placeholder='e.g John' />
-				</Form.Item>
-				<Form.Item
-					label='Last Name'
-					name='lastName'
-					required
-					rules={[{ required: true, message: "Please enter your last name" }]}
-				>
-					<Input placeholder='e.g Doe' style={{ width: "100%" }} />
-				</Form.Item>
+					<Col xs={24} md={12} lg={12}>
+						<Form.Item
+							label='Last Name'
+							name='lastName'
+							required
+							rules={[
+								{
+									required: true,
+									message: "Please enter your parent's last name",
+								},
+							]}
+						>
+							<Input
+								placeholder='e.g Doe'
+								style={{ width: "100%", marginTop: "10px" }}
+							/>
+						</Form.Item>
+					</Col>
+					<Col xs={24} md={12} lg={12}>
+						<Form.Item
+							label='Phone number'
+							name='phoneNumber'
+							required
+							rules={[
+								{
+									required: true,
+									validator: (
+										rule: any,
+										value: string,
+										cb: (msg?: string) => void,
+									) => {
+										if (!phoneNumberValidator(value)) {
+											cb("Invalid phone number");
+										} else {
+											cb();
+										}
+									},
+								},
+							]}
+						>
+							<Input
+								placeholder='e.g +2547123456789'
+								style={{ width: "100%", marginTop: "10px" }}
+							/>
+						</Form.Item>
+					</Col>
+					<Col xs={24} md={12} lg={12}>
+						<Form.Item
+							label='Email address'
+							name='email'
+							required
+							rules={[
+								{
+									required: true,
+									validator: (
+										rule: any,
+										value: string,
+										cb: (msg?: string) => void,
+									) => {
+										if (!emailValidator(value)) {
+											cb("Enter a valid email address");
+										} else {
+											cb();
+										}
+									},
+								},
+							]}
+							style={{ width: "100%", marginTop: "10px" }}
+						>
+							<Input placeholder='e.g someone@gmail.com' />
+						</Form.Item>
+					</Col>
+					<Col xs={24} md={12} lg={12}>
+						<Form.Item
+							label='Address'
+							name='address'
+							required
+							rules={[
+								{
+									required: true,
+									message: "Please enter your parent's address",
+								},
+							]}
+						>
+							<Input
+								placeholder='e.g Nairobi'
+								style={{ width: "100%", marginTop: "10px" }}
+							/>
+						</Form.Item>
+					</Col>
+				</Row>
 
-				<Form.Item
-					label='Phone number'
-					name='phoneNumber'
-					required
-					rules={[
-						{
-							required: true,
-							validator: (
-								rule: any,
-								value: string,
-								cb: (msg?: string) => void,
-							) => {
-								if (!phoneNumberValidator(value)) {
-									cb("Invalid phone number");
-								} else {
-									cb();
-								}
-							},
-						},
-					]}
+				<Row
+					style={{
+						marginTop: "10px",
+						display: "flex",
+						justifyContent: "space-between",
+					}}
 				>
-					<Input placeholder='e.g +2547123456789' style={{ width: "100%" }} />
-				</Form.Item>
-
-				<Form.Item
-					label='Email address'
-					name='email'
-					required
-					rules={[
-						{
-							required: true,
-							validator: (
-								rule: any,
-								value: string,
-								cb: (msg?: string) => void,
-							) => {
-								if (!emailValidator(value)) {
-									cb("Enter a valid email address");
-								} else {
-									cb();
-								}
-							},
-						},
-					]}
-					style={{ width: "100%", marginTop: "10px" }}
-				>
-					<Input placeholder='e.g someone@gmail.com' />
-				</Form.Item>
-
-				<Row>
 					<Col>
 						<Form.Item style={{ width: "100%", textAlign: "right" }}>
 							<Button

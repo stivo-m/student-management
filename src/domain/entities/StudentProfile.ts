@@ -5,20 +5,20 @@ class StudentProfile implements UserBioInformation, StudentInfo {
 	admissionNumber: number;
 	firstName: string;
 	lastName: string;
-	passportPhotoUrl: string;
+	file: any;
 
 	constructor(
 		dateOfBirth: Date,
 		admissionNumber: number,
 		firstName: string,
 		lastName: string,
-		passportPhotoUrl: string,
+		file: any,
 	) {
 		this.dateOfBirth = dateOfBirth;
 		this.admissionNumber = admissionNumber;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.passportPhotoUrl = passportPhotoUrl;
+		this.file = file;
 	}
 }
 
