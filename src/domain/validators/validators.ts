@@ -1,7 +1,5 @@
 const phoneNumberValidator = (phoneNumber: string): Boolean => {
-	const regExMatcher: RegExp = RegExp(
-		/^(?:254|\+254|0)?(7(?:(?:[12][0-9])|(?:0[0-8])|(9[0-2]))[0-9]{6})$/,
-	);
+	const regExMatcher: RegExp = RegExp(/^(\+254|0)[0-9]\d{8}$/);
 
 	return regExMatcher.test(phoneNumber);
 };

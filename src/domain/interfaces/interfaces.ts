@@ -28,7 +28,7 @@ export interface ParentInput {
 	firstName: string;
 	lastName: string;
 	dob: Date;
-	phoneNumber: PhoneNumber;
-	email: EmailAddress;
+	phoneNumber: string;
+	email: string;
 	address: string;
 }
