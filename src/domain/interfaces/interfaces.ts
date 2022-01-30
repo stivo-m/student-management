@@ -17,3 +17,18 @@ export interface ParentInfo {
 	emailAddress: EmailAddress;
 	address: string;
 }
+export interface StudentInput {
+	firstName: string;
+	lastName: string;
+	dob: Date;
+	admissionNumber: number;
+}
+
+export interface ParentInput {
+	firstName: string;
+	lastName: string;
+	dob: Date;
+	phoneNumber: PhoneNumber;
+	email: EmailAddress;
+	address: string;
+}

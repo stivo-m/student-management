@@ -14,11 +14,11 @@ class StudentProfile implements UserBioInformation, StudentInfo {
 		lastName: string,
 		passportPhotoUrl: string,
 	) {
-		(this.admissionNumber = admissionNumber),
-			(this.dateOfBirth = dateOfBirth),
-			(this.firstName = firstName),
-			(this.lastName = lastName),
-			(this.passportPhotoUrl = passportPhotoUrl);
+		this.dateOfBirth = dateOfBirth;
+		this.admissionNumber = admissionNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.passportPhotoUrl = passportPhotoUrl;
 	}
 }
 

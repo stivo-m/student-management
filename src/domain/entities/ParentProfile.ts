@@ -18,12 +18,12 @@ class ParentProfile implements UserBioInformation, ParentInfo {
 		emailAddress: EmailAddress,
 		address: string,
 	) {
-		(this.firstName = firstName),
-			(this.lastName = lastName),
-			(this.passportPhotoUrl = passportPhotoUrl),
-			(this.phoneNumber = phoneNumber),
-			(this.emailAddress = emailAddress),
-			(this.address = address);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.passportPhotoUrl = passportPhotoUrl;
+		this.phoneNumber = phoneNumber;
+		this.emailAddress = emailAddress;
+		this.address = address;
 	}
 }
 
